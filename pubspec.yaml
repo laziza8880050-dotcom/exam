@@ -1,0 +1,47 @@
+name: fitness
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  animate_do: ^5.1.0
+  bloc: ^9.2.0
+  cloud_firestore: ^6.5.0
+  dio: ^5.9.2
+  firebase_auth: ^6.5.2
+  firebase_core: ^4.10.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_gen: ^5.14.1
+  flutter_ruler_picker: ^1.0.6
+  flutter_svg: ^2.2.4
+  get_storage: ^2.1.1
+  google_fonts: ^8.1.0
+  google_sign_in: ^7.2.0
+  http: ^1.6.0
+  lottie: ^3.3.3
+  numberpicker: ^2.1.2
+  roundcheckbox: ^2.0.5
+  share_plus: ^13.1.0
+  toastification: ^3.2.0
+  ui_avatar: ^0.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_gen_runner: ^5.14.1
+  build_runner: ^2.14.1
+
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - assets/images/
+    - assets/icons/
+   
