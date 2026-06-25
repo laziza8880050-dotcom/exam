@@ -19,17 +19,16 @@ class UserModel {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-      name: json['name'] as String?,
-      cm: json['cm'] as int?,
-      gender: json['gender'] as String?,
-      goal: json['goal'] as String?,
-      level: json['level'] as String?,
-      old: json['old'] as int?,
-      width: json['width'] as int?,
-    );
-  }
-
+  return UserModel(
+    name: json['name'] as String?,
+    cm: (json['cm'] as num?)?.toInt(),
+    gender: json['gender'] as String?,
+    goal: json['goal'] as String?,
+    level: json['level'] as String?,
+    old: (json['old'] as num?)?.toInt(),
+    width: (json['width'] as num?)?.toInt(),
+  );
+}
   Map<String, dynamic> toJson() {
     return {
       'name' :name,

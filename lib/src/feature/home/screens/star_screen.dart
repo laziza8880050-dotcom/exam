@@ -7,6 +7,7 @@ import 'package:fitness/src/feature/home/widget/star.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 class StarScreen extends StatefulWidget {
   const StarScreen({super.key});
@@ -37,7 +38,7 @@ class _StarScreenState extends State<StarScreen> {
         leading: Padding(
           padding: const EdgeInsets.all(8),
           child: InkWell(onTap: () {
-            Navigator.pushNamed(context, AppPages.home);
+            Navigator.pushNamed(context, AppPages.main);
           },
             child: SvgPicture.asset('assets/icons/2.svg', width: 12, height: 12)),
         ),
@@ -52,7 +53,7 @@ class _StarScreenState extends State<StarScreen> {
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state.status == HomeStatus.loading) {
-            return CircularProgressIndicator();
+            return Center(child:Lottie.asset('assets/lottie/ptica.json') ,);
           } else if (state.status == HomeStatus.succes) {
             return Column(
               children: [

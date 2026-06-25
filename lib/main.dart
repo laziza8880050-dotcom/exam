@@ -19,7 +19,7 @@ void main() async {
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => SetUpCubit()),
         BlocProvider(create: (context) => HomeCubit()),
-        BlocProvider(create: (context) => UserCubit()),
+        BlocProvider(create: (context) => ProfileCubit()..getUser()),
 
       ],
       child: ExamApp(),

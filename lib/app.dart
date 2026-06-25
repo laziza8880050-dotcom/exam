@@ -13,8 +13,8 @@ class ExamApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: FirebaseAuth.instance.currentUser == null
 
-      ?AppPages.main
-      :AppPages.onboarding,
+      ?AppPages.onboarding
+      :AppPages.main,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }

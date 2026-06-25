@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             label: '',
-            icon:SvgPicture.asset('assets/icons/Star.svg')
+            icon:SvgPicture.asset('assets/icons/star.svg', color: AppColors.white,)
           ),
  BottomNavigationBarItem(
             label: '',

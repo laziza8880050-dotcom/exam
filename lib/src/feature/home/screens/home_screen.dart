@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(width: 21),
           SvgPicture.asset('assets/icons/zvonok.svg'),
           SizedBox(width: 21),
-          SvgPicture.asset('assets/icons/user.svg'),
+          InkWell(onTap: (){ Navigator.pushNamed(context, AppPages.pro)  ;
+                       },
+            child: SvgPicture.asset('assets/icons/user.svg')),
         ],
         title: Text(
             FirebaseAuth.instance.currentUser?.email ??
@@ -46,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state.status == HomeStatus.loading) {
-            return CircularProgressIndicator();
+            return Center(child:Lottie.asset('assets/lottie/ptica.json') ,);
           } else if (state.status == HomeStatus.succes) {
             print('xolat succes');
             return Column(

@@ -4,31 +4,61 @@ import 'package:fitness/src/feature/settings/cubit/user_state.dart';
 import 'package:fitness/src/feature/settings/model/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class UserCubit extends Cubit<UserState> {
-  UserCubit() : super(UserState()) {
-    getuser();
-  }
 
-  Future<void> getuser() async {
-    print('get lesson ishladi');
-    emit(UserState(status: UserStatus.loading));
+class ProfileCubit extends Cubit<ProfileState> {
+  ProfileCubit() : super(const ProfileState());
+
+  Future<void> getUser() async {
+    emit(
+      state.copyWith(
+        status: ProfileStatus.loading,
+      ),
+    );
+
     try {
-      final result = await FirebaseFirestore.instance
+      final currentUser = FirebaseAuth.instance.currentUser;
+
+      if (currentUser == null) {
+        emit(
+          state.copyWith(
+            status: ProfileStatus.error,
+            errorText: 'User not found',
+          ),
+        );
+        return;
+      }
+
+      final doc = await FirebaseFirestore.instance
           .collection('user_info')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .doc(currentUser.uid)
           .get();
-      List<UserModel> temp = [];
-    print('lesson lar keldi ${temp.length}');
-      emit(UserState(status: UserStatus.succes, user: temp));
-      print('state legnth of lesson  ${state.user.length}');
-    } on FirebaseException catch (e) {
+
+      if (!doc.exists || doc.data() == null) {
+        emit(
+          state.copyWith(
+            status: ProfileStatus.error,
+            errorText: 'Profile not found',
+          ),
+        );
+        return;
+      }
+      print(FirebaseAuth.instance.currentUser!.uid);
+
+      final user = UserModel.fromJson(doc.data()!);
+
       emit(
-        UserState(
-          status: UserStatus.error, 
-          errorText: e.message ?? ' Xatoli'),
+        state.copyWith(
+          status: ProfileStatus.success,
+          user: user,
+        ),
       );
-    } catch (error) {
-      emit(UserState(status: UserStatus.error, errorText: error.toString()));
+    } catch (e) {
+      emit(
+        state.copyWith(
+          status: ProfileStatus.error,
+          errorText: e.toString(),
+        ),
+      );
     }
   }
 }

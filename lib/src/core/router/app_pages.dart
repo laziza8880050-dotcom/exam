@@ -16,6 +16,8 @@ class AppPages {
   static const String main= '/main';
   static const String zvezda= '/zvezda';
   static const String pro= '/pro';
+  static const String detailpro= '/detailpro';
+
 
 
 

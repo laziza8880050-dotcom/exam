@@ -1,22 +1,39 @@
-import 'package:fitness/src/feature/settings/model/user_model.dart';
 import 'package:equatable/equatable.dart';
-class UserState extends Equatable {
-  final UserStatus status;
-  final String? errorText;
-  final List<UserModel> user;
+import 'package:fitness/src/feature/settings/model/user_model.dart';
 
-  const UserState({
-    this.status = UserStatus.initial,
+class ProfileState extends Equatable {
+  final ProfileStatus status;
+  final String? errorText;
+  final UserModel? user;
+
+  const ProfileState({
+    this.status = ProfileStatus.initial,
     this.errorText,
-    this.user = const [],
+    this.user,
   });
 
+  ProfileState copyWith({
+    ProfileStatus? status,
+    String? errorText,
+    UserModel? user,
+  }) {
+    return ProfileState(
+      status: status ?? this.status,
+      errorText: errorText ?? this.errorText,
+      user: user ?? this.user,
+    );
+  }
+
   @override
-  List<Object?> get props => [user, status];
-
-  get newIndex => null;
+  List<Object?> get props => [
+        status,
+        errorText,
+        user,
+      ];
 }
-
-
-
-enum UserStatus { initial, loading, error, succes }
+enum ProfileStatus {
+  initial,
+  loading,
+  success,
+  error,
+}

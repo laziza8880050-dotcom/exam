@@ -15,6 +15,7 @@ import 'package:fitness/src/feature/set_up/screens/old.dart';
 import 'package:fitness/src/feature/set_up/screens/set_up.dart';
 import 'package:fitness/src/feature/set_up/screens/your_height.dart';
 import 'package:fitness/src/feature/set_up/screens/your_width.dart';
+import 'package:fitness/src/feature/settings/screens/detail_profil.dart';
 import 'package:fitness/src/feature/settings/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -56,6 +57,8 @@ case AppPages.signup:
         return onPage(StarScreen());
           case AppPages.pro:
         return onPage(ProfileScreen());
+            case AppPages.detailpro:
+        return onPage(DetailProfil());
     
  default: return null;
     }
