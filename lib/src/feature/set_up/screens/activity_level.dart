@@ -1,4 +1,5 @@
 import 'package:fitness/src/core/const/colors/app_colors.dart';
+import 'package:fitness/src/core/router/app_pages.dart';
 import 'package:fitness/src/core/utils/text_style.dart';
 import 'package:fitness/src/core/widget/blur_botton.dart';
 import 'package:fitness/src/feature/set_up/cubit/set_up_cubit.dart';
@@ -82,7 +83,8 @@ class _ActivityLevelState extends State<ActivityLevel> {
                       bordercolor: AppColors.white,
                       onPressed: () {
                           context.read<SetUpCubit>().sendInfo();
-                  
+                    Navigator.pushNamed(context, AppPages.main)  ;
+                             
                       },
                     ),
             ],
