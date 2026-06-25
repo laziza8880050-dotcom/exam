@@ -96,7 +96,7 @@ class _YourHeightState extends State<YourHeight> {
           Text(
             ("${currentValue.toStringAsFixed(1)}cm"),
             style: context.customTextStyle(
-              fontSize: 85,
+              fontSize: 60,
               weight: FontWeight.bold,
               color: AppColors.white,
             ),
